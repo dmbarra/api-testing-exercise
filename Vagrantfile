@@ -7,4 +7,15 @@ Vagrant.configure(2) do |config|
   config.vm.box = "hashicorp/precise32"
   config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.network :forwarded_port, guest: 3000, host: 4567
+
+  # Prepared enviroment with frisby
+  $prepare = <<SCRIPT
+  cd /vagrant
+  npm install
+  npm install --save-dev frisby
+  sudo npm install jasmine-node -g
+SCRIPT
+	config.vm.provision "shell", inline: $prepare
+
+
 end
