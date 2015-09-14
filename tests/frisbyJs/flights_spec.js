@@ -65,7 +65,6 @@ frisby.create('Deleta registro de voo')
       })
   .toss();
 
-
 frisby.create('Verifica o tipo dos campos')
   .get(URL)
   .expectStatus(200)
